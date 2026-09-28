@@ -75,3 +75,45 @@ header {
     padding: 6px 10px;
     border-radius: 15px;
 }
+/* Homepage Events */
+
+.homepage {
+    padding: 30px 40px;
+}
+
+.events-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-heading h2 {
+    font-size: 22px;
+}
+
+.section-heading a {
+    color: #0b1f3a;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.event-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.event-card h3 {
+    margin-top: 0;
+}
+
+.event-card p {
+    margin: 6px 0;
+}
