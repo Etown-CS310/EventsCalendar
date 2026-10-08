@@ -12,10 +12,11 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js" defer></script>
     <!-- My stylesheet -->
     <link href="css/calendar.css" rel="stylesheet" />
-
+    <!-- JQuery JS -->
+    <script src="https://code.jquery.com/jquery-4.0.0.js"
+        integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
     <!-- Bootstrap JS bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
-
     <!-- My calendar JS -->
     <script src="processes/calendarJS/calendar.js" defer></script>
 </head>
@@ -32,6 +33,28 @@
     </main>
     <footer>
         <div class="" id="foot"><!-- Match idex footer --></div>
+        <!-- Event Popout card -->
+        <div id="eventCard" class="card">
+            <div class="card-body">
+                <button type="button" id="eventCardClose" class="btn-close float-end"></button>
+                <h5 class="card-title" id="cardTitle"></h5>
+                <p class="card-text" id="cardDate"></p>
+                <p class="card-text" id="cardTime"></p>
+                <p class="card-text" id="cardDesc"></p>
+                <img id="cardPic" src="" alt="" class="img-fluid" style="display:none;">
+            </div>
+        </div>
+        <!-- Event detail sidebar -->
+        <div id="eventPanel" class="card">
+            <div class="card-body">
+                <button type="button" id="eventPanelClose" class="btn-close float-end"></button>
+                <h5 class="card-title" id="panelTitle"></h5>
+                <p class="card-text" id="panelDate"></p>
+                <p class="card-text" id="panelTime"></p>
+                <p class="card-text" id="panelDesc"></p>
+                <img id="panelPic" src="" alt="" class="img-fluid" style="display:none;">
+            </div>
+        </div>
     </footer>
 
 </body>
