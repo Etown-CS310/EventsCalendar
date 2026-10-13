@@ -1,0 +1,145 @@
+
+/* =====================================
+   EVENTS AT ETOWN - LOGIN PAGE STYLES
+   ===================================== */
+
+/* Page Background */
+#loginBody {
+    background: linear-gradient(135deg, #e8eef7, #c8d7ed);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/* Main Login Container */
+.login-card {
+    background-color: white;
+    width: 100%;
+    max-width: 430px;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Website Title */
+.site-title {
+    color: #17365d;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Login Heading */
+.login-heading {
+    color: #17365d;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+/* Subtitle */
+.login-subtitle {
+    color: #6c757d;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* Input Labels */
+.form-label {
+    color: #263238;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Email and Password Inputs */
+.form-control {
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Input Focus */
+.form-control:focus {
+    border-color: #17365d;
+    box-shadow: 0 0 0 3px rgba(23, 54, 93, 0.15);
+}
+
+/* Show/Hide Password Button */
+#togglePassword {
+    font-size: 13px;
+    border-color: #ced4da;
+}
+
+#togglePassword:hover {
+    background-color: #e8eef7;
+    color: #17365d;
+}
+
+/* Login Button */
+#loginBtn {
+    background-color: #17365d;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    margin-top: 10px;
+    transition: background-color 0.2s ease;
+}
+
+/* Login Button Hover */
+#loginBtn:hover {
+    background-color: #28558a;
+}
+
+/* Login Button Focus */
+#loginBtn:focus-visible {
+    outline: 3px solid #7da6d8;
+    outline-offset: 3px;
+}
+
+/* Login Messages */
+#loginMessage {
+    font-size: 13px;
+    text-align: center;
+    padding: 12px;
+    margin-top: 15px;
+}
+
+/* Homepage Link */
+.home-link {
+    color: #17365d;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.home-link:hover {
+    color: #28558a;
+    text-decoration: underline;
+}
+
+/* Mobile Responsive Design */
+@media only screen and (max-width: 480px) {
+
+    .login-card {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    .site-title {
+        font-size: 24px;
+    }
+
+    .login-heading {
+        font-size: 21px;
+    }
+
+    .login-subtitle {
+        font-size: 13px;
+    }
+}
+
