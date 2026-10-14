@@ -33,6 +33,6 @@ This webpage will be the central location for all dates of events on Etown's cam
 - Improve web style and mobile responsiveness
 
 ## Pictures of Current site
-![Login Page](./login_page)
-![Index Page](./events_page)
-![Calendar Page](./calendar_view)
+![Login Page](./login_page.png)
+![Index Page](./events_page.png)
+![Calendar Page](./calendar_view.png)
