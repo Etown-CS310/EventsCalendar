@@ -44,11 +44,13 @@
     margin-bottom: 4px;
     font-size: 0.9rem;
 }
+
 .upcoming-event-title {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .upcoming-event-time {
     font-size: 0.8rem;
     opacity: 0.9;
@@ -82,6 +84,6 @@
     flex-shrink: 0;
 }
 
-#createEventBtn{
+#createEventBtn {
     margin-top: 16px;
 }
