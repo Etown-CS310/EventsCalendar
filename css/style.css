@@ -1,81 +1,14 @@
+
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #f6f7fb;
     color: #0b1f3a;
 }
-
-header {
-    background-color: white;
-    display: flex;
-    align-items: center;
-    padding: 20px 40px;
-    gap: 40px;
-}
-.site-title h1 {
-    margin: 0;
-    font-size: 22px;
-}
-
-.site-title p {
-    margin: 3px 0 0;
-    font-size: 13px;
-}
-.search-bar {
-    flex: 1;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 14px 20px;
-    border: none;
-    border-radius: 12px;
-    background-color: #eef3fb;
-    font-size: 14px;
-}
-
-.main-nav {
-    background-color: white;
-    display: flex;
-    gap: 10px;
-    padding: 0 40px 12px;
-}
-
-.main-nav a {
-    color: #0b1f3a;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 14px;
-    border-radius: 8px;
-}
-
-.quick-links {
-    background-color: white;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0 40px 15px;
-}
-
-.quick-links span {
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.quick-links a {
-    background-color: #eef3fb;
-    color: #0b1f3a;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 6px 10px;
-    border-radius: 15px;
-}
-/* Homepage Events */
 
 .homepage {
     padding: 30px 40px;
@@ -90,10 +23,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 
 .section-heading h2 {
     font-size: 22px;
+    margin: 0;
 }
 
 .section-heading a {
@@ -108,12 +43,67 @@ header {
     padding: 20px;
     border-radius: 12px;
     margin-top: 10px;
+    width: 100%;
 }
 
 .event-card h3 {
     margin-top: 0;
+    font-size: 18px;
 }
 
 .event-card p {
     margin: 6px 0;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .homepage {
+        padding: 20px;
+    }
+
+    .section-heading {
+        flex-wrap: wrap;
+    }
+
+    .section-heading h2 {
+        font-size: 20px;
+    }
+
+    .section-heading a {
+        font-size: 13px;
+    }
+
+    .event-card {
+        padding: 16px;
+    }
+
+    .event-card h3 {
+        font-size: 16px;
+    }
+
+    .event-card p {
+        font-size: 13px;
+    }
+}
+#navbar {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .search-bar {
+        width: 100%;
+        flex: none;
+    }
+
+    .search-bar input {
+        display: block;
+        width: 100%;
+    }
 }
