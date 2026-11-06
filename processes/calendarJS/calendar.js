@@ -29,6 +29,10 @@
             }
         });
 
+        document.getElementById("createEventBtn").addEventListener("click", function () {
+            window.location.href = "eventForm.html";
+        });
+
         let tempData = [{
             title: "Lax Game", start: "2026-10-15", category: "Athletics",
             extendedProps: {
