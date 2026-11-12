@@ -167,11 +167,39 @@
             }
         }];
 
-        applyCategoryColors(tempData);
-        renderCalendar(tempData);
-        renderUpcomingList(tempData);
-        renderLegend();
-    }
+        fetch("/api/events")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to load events");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const events = data.map(event => ({
+                    id: event.id,
+                    title: event.title,
+                    start: event.start_time,
+                    end: event.end_time,
+                    category: event.category,
+                    extendedProps: {
+                        time: new Date(event.start_time).toLocaleTimeString(
+                            "en-US",
+                            { hour: "numeric", minute: "2-digit" }
+                        ),
+                        description: event.description,
+                        location: event.location
+                    }
+                }));
+
+                applyCategoryColors(events);
+                renderCalendar(events);
+                renderUpcomingList(events);
+                renderLegend();
+            })
+            .catch(error => {
+                console.error("Error loading events:", error);
+            });
+            }
 
     function renderCalendar(events) {
         let calendar = new FullCalendar.Calendar(calendarElm, {
