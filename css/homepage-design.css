@@ -1,0 +1,317 @@
+
+/* =========================================
+   EVENTS AT ETOWN - HOMEPAGE REDESIGN
+   Milestone 2 Styling
+   ========================================= */
+
+/* Color palette */
+.homepage-redesign {
+    --navy: #102a43;
+    --blue: #176b9c;
+    --light-blue: #eaf2f8;
+    --background: #f4f6f8;
+    --white: #ffffff;
+    --text: #172b4d;
+
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.homepage-redesign .site-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 25px 6%;
+    gap: 40px;
+}
+
+.homepage-redesign .site-title h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.homepage-redesign .site-title p {
+    color: #b8d0e5;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Search bar */
+.homepage-redesign .search-bar input {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    border-radius: 8px;
+    padding: 14px 20px;
+}
+
+.homepage-redesign .search-bar input::placeholder {
+    color: #c4d5e5;
+}
+
+.homepage-redesign .search-bar input:focus {
+    outline: 2px solid #70b7e5;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+.homepage-redesign .main-nav {
+    background: var(--white);
+    padding: 12px 6%;
+    gap: 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.homepage-redesign .main-nav a {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    transition: background 0.2s ease;
+}
+
+.homepage-redesign .main-nav a:hover {
+    background: var(--light-blue);
+}
+
+/* Highlight Explore Events */
+.homepage-redesign .main-nav a[href="index.html"] {
+    background: var(--light-blue);
+    color: var(--blue);
+}
+
+/* Login button */
+.homepage-redesign .main-nav .nav-login-btn {
+    margin-left: auto;
+    background: var(--navy);
+    color: white;
+    padding: 10px 24px;
+}
+
+.homepage-redesign .main-nav .nav-login-btn:hover {
+    background: var(--blue);
+}
+
+/* =========================================
+   QUICK LINKS
+   ========================================= */
+
+.homepage-redesign .quick-links {
+    background: white;
+    padding: 16px 6%;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.homepage-redesign .quick-links span {
+    color: #64748b;
+    letter-spacing: 1px;
+    font-size: 11px;
+}
+
+.homepage-redesign .quick-links a {
+    background: var(--light-blue);
+    color: var(--navy);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.homepage-redesign .quick-links a:hover {
+    background: var(--blue);
+    color: white;
+}
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.homepage-redesign .homepage {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 45px 6%;
+}
+
+.homepage-redesign .events-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+/* Section heading */
+.homepage-redesign .section-heading {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.homepage-redesign .section-heading h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.homepage-redesign .section-heading a {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+/* =========================================
+   EVENT CARD DESIGN
+   ========================================= */
+
+.homepage-redesign .event-card {
+    position: relative;
+    background: white;
+    color: var(--navy);
+    border: 1px solid #e2e8f0;
+    border-top: 5px solid #176b9c;
+    border-radius: 6px;
+    padding: 65px 24px 28px;
+    margin-top: 0;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(16, 42, 67, 0.06);
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+/* Blue alternating cards */
+.homepage-redesign .event-card:nth-child(odd of .event-card) {
+    background: linear-gradient(135deg, #176b9c, #102a43);
+    color: white;
+    border-color: #176b9c;
+}
+
+/* Event title */
+.homepage-redesign .event-card h3 {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 18px;
+    color: inherit;
+}
+
+/* Event information */
+.homepage-redesign .event-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 4px 0;
+    color: inherit;
+}
+
+/* Hover animation */
+.homepage-redesign .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(16, 42, 67, 0.12);
+}
+
+/* =========================================
+   EVENT CATEGORY AND DATE BADGE
+   ========================================= */
+
+/* Category label */
+.homepage-redesign .event-category {
+    position: absolute;
+    top: 22px;
+    left: 24px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    opacity: 0.85;
+}
+
+/* Date badge */
+.homepage-redesign .event-date-badge {
+    position: absolute;
+    top: 16px;
+    right: 0;
+    background: #176b9c;
+    color: white;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px 0 0 4px;
+}
+
+/* Date badge on blue cards */
+.homepage-redesign .event-card:nth-child(odd of .event-card)
+.event-date-badge {
+    background: white;
+    color: #176b9c;
+}
+
+/* =========================================
+   TABLET RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 900px) {
+    .homepage-redesign .events-section {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .homepage-redesign .site-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .homepage-redesign .main-nav {
+        padding: 12px 20px;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .homepage-redesign .main-nav .nav-login-btn {
+        margin-left: 0;
+    }
+
+    .homepage-redesign .quick-links {
+        padding: 15px 20px;
+    }
+
+    .homepage-redesign .homepage {
+        padding: 30px 20px;
+    }
+
+    .homepage-redesign .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .homepage-redesign .events-section {
+        grid-template-columns: 1fr;
+    }
+
+    .homepage-redesign .event-card {
+        min-height: 200px;
+    }
+
+    .homepage-redesign .event-card h3 {
+        font-size: 19px;
+    }
+}
