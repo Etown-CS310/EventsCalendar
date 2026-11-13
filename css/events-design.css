@@ -1,0 +1,306 @@
+
+/* =========================================
+   EVENTS AT ETOWN - ALL EVENTS REDESIGN
+   Milestone 2 Styling
+   ========================================= */
+
+/* Color palette */
+.events-redesign {
+    --navy: #102a43;
+    --blue: #176b9c;
+    --light-blue: #eaf2f8;
+    --background: #f4f6f8;
+    --white: #ffffff;
+    --text: #172b4d;
+
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.events-redesign header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: var(--navy);
+    color: white;
+    padding: 25px 6%;
+}
+
+.events-redesign .site-title {
+    flex-shrink: 0;
+}
+
+.events-redesign .site-title h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0;
+    color: white;
+}
+
+.events-redesign .site-title p {
+    color: #b8d0e5;
+    font-size: 13px;
+    margin: 5px 0 0;
+}
+
+/* Search bar */
+.events-redesign .search-bar {
+    flex: 1;
+}
+
+.events-redesign .search-bar input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+
+.events-redesign .search-bar input::placeholder {
+    color: #c4d5e5;
+}
+
+.events-redesign .search-bar input:focus {
+    outline: 2px solid #70b7e5;
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+.events-redesign .main-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: white;
+    padding: 12px 6%;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.events-redesign .main-nav a {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.events-redesign .main-nav a:hover {
+    background: var(--light-blue);
+}
+
+/* Highlight current page */
+.events-redesign .main-nav a[href="events.html"] {
+    background: var(--light-blue);
+    color: var(--blue);
+}
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.events-redesign .homepage {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 45px 6%;
+}
+
+.events-redesign .events-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section heading */
+.events-redesign .section-heading {
+    display: block;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.events-redesign .section-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0;
+}
+
+/* =========================================
+   EVENT GRID
+   ========================================= */
+
+.events-redesign .event-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* =========================================
+   EVENT CARDS
+   ========================================= */
+
+.events-redesign .event-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: white;
+    color: var(--navy);
+
+    border: 1px solid #e2e8f0;
+    border-top: 5px solid var(--blue);
+    border-radius: 6px;
+
+    padding: 28px 24px;
+    margin: 0;
+    min-height: 230px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(16, 42, 67, 0.06);
+
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+/* Alternating blue cards */
+.events-redesign .event-card:nth-child(odd) {
+    background: linear-gradient(135deg, #176b9c, #102a43);
+    color: white;
+    border-color: var(--blue);
+}
+
+/* Event titles */
+.events-redesign .event-card h3 {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 18px;
+    color: inherit;
+}
+
+/* Event information */
+.events-redesign .event-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 4px 0;
+    color: inherit;
+}
+
+/* Card hover effect */
+.events-redesign .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(16, 42, 67, 0.12);
+}
+
+/* =========================================
+   CATEGORY AND DATE BADGES
+   ========================================= */
+
+/* These styles will be used when badges
+   are added to the existing event cards. */
+
+.events-redesign .event-card:has(.event-date-badge) {
+    padding-top: 65px;
+    justify-content: flex-start;
+}
+
+.events-redesign .event-category {
+    position: absolute;
+    top: 22px;
+    left: 24px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    opacity: 0.85;
+}
+
+.events-redesign .event-date-badge {
+    position: absolute;
+    top: 16px;
+    right: 0;
+    background: var(--blue);
+    color: white;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px 0 0 4px;
+}
+
+.events-redesign .event-card:nth-child(odd)
+.event-date-badge {
+    background: white;
+    color: var(--blue);
+}
+
+/* =========================================
+   TABLET RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 900px) {
+    .events-redesign .event-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .events-redesign header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        padding: 20px;
+    }
+
+    .events-redesign .main-nav {
+        padding: 12px 20px;
+        gap: 6px;
+    }
+
+    .events-redesign .main-nav a {
+        padding: 10px 12px;
+    }
+
+    .events-redesign .homepage {
+        padding: 30px 20px;
+    }
+
+    .events-redesign .section-heading h2 {
+        font-size: 26px;
+    }
+
+    .events-redesign .event-list {
+        grid-template-columns: 1fr;
+    }
+
+    .events-redesign .event-card {
+        min-height: 200px;
+    }
+
+    .events-redesign .event-card h3 {
+        font-size: 19px;
+    }
+}
