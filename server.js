@@ -1,7 +1,11 @@
 
 const { syncEvents } = require("./syncEvents");
 const express = require("express");
-const { getDBConnection } = require("./db");
+const { getDBConnection, initializeUsersTable } = require("./db");
+const session = require("express-session");
+const crypto = require("crypto");
+const path = require("path");
+const authRoutes = require("./processes/api/auth");
 
 const app = express();
 const PORT = 3000;
@@ -9,8 +13,67 @@ const PORT = 3000;
 // Parse JSON requests
 app.use(express.json());
 
+// Configure user sessions
+app.use(session({
+    secret: process.env.SESSION_SECRET || crypto.randomBytes(32).toString("hex"),
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: false,
+        sameSite: "lax",
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}));
+
+// Authentication API routes
+app.use("/api", authRoutes);
+
 // Serve frontend files
-app.use(express.static(__dirname));
+app.use("/css", express.static(path.join(__dirname, "css")));
+app.use("/images", express.static(path.join(__dirname, "images")));
+
+// Serve frontend JavaScript files
+app.use("/processes/calendarJS", express.static(
+    path.join(__dirname, "processes", "calendarJS")
+));
+
+app.use("/processes/createEventJS", express.static(
+    path.join(__dirname, "processes", "createEventJS")
+));
+
+app.get("/processes/eventsSearch.js", (req, res) => {
+    res.sendFile(path.join(__dirname, "processes", "eventsSearch.js"));
+});
+
+app.get("/processes/homepage.js", (req, res) => {
+    res.sendFile(path.join(__dirname, "processes", "homepage.js"));
+});
+
+// Serve homepage
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// Serve HTML pages
+app.get("/:page", (req, res, next) => {
+    const allowedPages = [
+        "index.html",
+        "events.html",
+        "calendar.html",
+        "login.html",
+        "register.html",
+        "navbar.html",
+        "footer.html",
+        "eventForm.html"
+    ];
+
+    if (!allowedPages.includes(req.params.page)) {
+        return next();
+    }
+
+    res.sendFile(path.join(__dirname, req.params.page));
+});
 
 // GET all events
 app.get("/api/events", async (req, res) => {
@@ -113,9 +176,18 @@ app.post("/api/events", async (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+initializeUsersTable()
+    .then(() => {
+        console.log("Users table initialized");
+
+        app.listen(PORT, () => {
+            console.log(`Server running at http://localhost:${PORT}`);
+        });
+    })
+    .catch(error => {
+        console.error("Failed to initialize users table:", error);
+        process.exit(1);
+    });
 
 // Initial event sync
 syncEvents().catch(error => {

@@ -30,7 +30,6 @@
 
 <body id="loginBody">
 
-    
     <main class="login-layout">
 
         <!-- Left side branding panel -->
@@ -63,7 +62,6 @@
 
         </section>
 
-
         <div class="login-card">
 
             <!-- Website title -->
@@ -93,6 +91,7 @@
                         type="email"
                         class="form-control"
                         id="email"
+                        name="email"
                         placeholder="Enter your email"
                         autocomplete="email"
                         required
@@ -110,8 +109,9 @@
                             type="password"
                             class="form-control"
                             id="password"
+                            name="password"
                             placeholder="Enter your password"
-                            autocomplete="off"
+                            autocomplete="current-password"
                             required
                         >
 
@@ -145,6 +145,16 @@
                 </button>
 
             </form>
+
+            <!-- Create account link -->
+            <div class="text-center mt-4">
+                <p class="text-muted mb-0">
+                    Don't have an account?
+                    <a href="register.html" class="home-link">
+                        Create an account
+                    </a>
+                </p>
+            </div>
 
             <!-- Return to homepage -->
             <div class="text-center mt-4">
