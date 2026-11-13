@@ -37,7 +37,12 @@
                 <h6 class="mt-4">Categories</h6>
                 <div id="legend"></div>
 
-                <button type="button" class="btn btn-primary w-100 mb-3" id="createEventBtn">+ Create Event</button>
+                <button type="button" class="btn btn-primary w-100 mb-3"
+                    id="createEventBtn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createEventModal">
+                    + Create Event
+                </button>
             </div>
             <div class="col-md-9" id="calendar"></div>
         </div>
@@ -56,6 +61,58 @@
             </div>
         </div>
     </footer>
+    <!-- Create Event Modal -->
+<div class="modal fade" id="createEventModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create New Event</h5>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form id="createEventForm">
+
+                    <label class="form-label">Event Title</label>
+                    <input type="text" class="form-control mb-3"
+                        id="eventTitle" required>
+
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control mb-3"
+                        id="eventDescription"></textarea>
+
+                    <label class="form-label">Start Date & Time</label>
+                    <input type="datetime-local" class="form-control mb-3"
+                        id="eventStart" required>
+
+                    <label class="form-label">End Date & Time</label>
+                    <input type="datetime-local" class="form-control mb-3"
+                        id="eventEnd">
+
+                    <label class="form-label">Location</label>
+                    <input type="text" class="form-control mb-3"
+                        id="eventLocation">
+
+                    <label class="form-label">Category</label>
+                    <select class="form-select mb-3" id="eventCategory" required>
+                        <option value="">Select Category</option>
+                        <option>OSA Activities</option>
+                        <option>Weekender</option>
+                        <option>Lectures</option>
+                        <option>Traditions</option>
+                        <option>Athletics</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        Save Event
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 

@@ -21,6 +21,7 @@
 
         //Card close listeners
         document.getElementById("eventCardClose").addEventListener("click", closeEventCard);
+        document.getElementById("createEventForm").addEventListener("submit", saveEvent);
 
         document.addEventListener("click", function (e) {
             let card = document.getElementById("eventCard");
@@ -346,4 +347,45 @@
             weekday: "short", month: "long", day: "numeric"
         });
     }
+    async function saveEvent(e) {
+    e.preventDefault();
+
+    const eventData = {
+        title: document.getElementById("eventTitle").value,
+        description: document.getElementById("eventDescription").value,
+        start_time: document.getElementById("eventStart").value,
+        end_time: document.getElementById("eventEnd").value,
+        location: document.getElementById("eventLocation").value,
+        category: document.getElementById("eventCategory").value
+    };
+
+    try {
+        const response = await fetch("/api/events", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(eventData)
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || "Failed to save event");
+        }
+
+        alert("Event created successfully!");
+
+        bootstrap.Modal.getInstance(
+            document.getElementById("createEventModal")
+        ).hide();
+
+        document.getElementById("createEventForm").reset();
+
+        window.location.reload();
+
+    } catch (error) {
+        console.error("Error saving event:", error);
+        alert("Error saving event: " + error.message);
+    }
+}
 })();
