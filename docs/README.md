@@ -1,38 +1,62 @@
 # Events Calendar
-## Description:
-This webpage will be the central location for all dates of events on Etown's campus and make it simpler to find their location, date and times. Etown students, staff, and faculty are the intended primary users of this application.
+
+## Description
+Events at Etown is a website designed to be the central location for events happening on Elizabethtown College's campus. The goal is to make it easier for students, staff, and faculty to find campus events, including their dates, times, and locations.
+
+The website allows users to browse upcoming events, search for specific events, view events on a calendar, and create new events.
+
+## Technologies Used
+- HTML, CSS, and JavaScript
+- Bootstrap 5
+- jQuery
+- Node.js
+- Express.js
+- SQLite
+- FullCalendar
 
 ## Run Locally
-1. Start up a local webserver
-2. follow the link: http://127.0.0.1:<server_port>/EventsCalendar/index.html
+
+1. Clone or download the GitHub repository.
+2. Open the `EventsCalendar` folder in VS Code.
+3. Open a terminal in the project folder.
+4. Install the required dependencies:
+
+   `npm install`
+
+5. Start the Express server:
+
+   `node server.js`
+
+6. Open the following URL in your browser:
+
+   http://localhost:3000/index.html
+
+**Note:** The Express server must be running for the website to retrieve and create events through the database.
 
 ## Summary of Implemented Features
-### Login Page:​
-  - Email and password input
-  - fields​
-  - Show/hide password button​
-  - Error and success message​
-  - Navigation back to events​
-### Index Page:​
-  - Event Cards showing names, dates, times, and locations
-  - "Today" and "This Week" sections​
-  - Search and category/date filter controls​
-  - Navigation bar to be implemented across all pages
-### Calendar Page:​
-  - Full calendar with navigation
-  - Event cards with details when user clicks on event
-  - Events populate calendar and upcoming list​
-  - Color coded events​
-  - Create event button
 
-## Unfinished Features
-- Registration page for creating an account
-- Create event form for admin
-- JS search and filtering
-- Database connection to feed events
-- Improve web style and mobile responsiveness
+### Login Page
+- Email and password input fields
+- Show/hide password button
+- Error and success messages
+- Navigation back to events
 
-## Pictures of Current site
-![Login Page](./login_page.png)
-![Index Page](./events_page.png)
-![Calendar Page](./calendar_view.png)
+### Homepage
+- Displays upcoming events retrieved from the SQLite database
+- Event cards show event names, dates, times, and locations
+- Navigation bar shared across pages
+- Search functionality that directs users to the All Events page
+
+### All Events Page
+- Displays upcoming campus events from the database
+- Search functionality using JavaScript
+- Users can search by event name, description, location, or category
+- Events are displayed in chronological order
+- Event cards display the event name, date, time, and location
+
+### Calendar Page
+- Interactive calendar using FullCalendar
+- Month navigation
+- Events retrieved from the SQLite database
+- Color-coded events based on category
+- Event details
