@@ -21,6 +21,7 @@
 
         //Card close listeners
         document.getElementById("eventCardClose").addEventListener("click", closeEventCard);
+        document.getElementById("createEventForm").addEventListener("submit", saveEvent);
 
         document.addEventListener("click", function (e) {
             let card = document.getElementById("eventCard");
@@ -171,11 +172,39 @@
             }
         }];
 
-        applyCategoryColors(tempData);
-        renderCalendar(tempData);
-        renderUpcomingList(tempData);
-        renderLegend();
-    }
+        fetch("/api/events")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to load events");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const events = data.map(event => ({
+                    id: event.id,
+                    title: event.title,
+                    start: event.start_time,
+                    end: event.end_time,
+                    category: event.category,
+                    extendedProps: {
+                        time: new Date(event.start_time).toLocaleTimeString(
+                            "en-US",
+                            { hour: "numeric", minute: "2-digit" }
+                        ),
+                        description: event.description,
+                        location: event.location
+                    }
+                }));
+
+                applyCategoryColors(events);
+                renderCalendar(events);
+                renderUpcomingList(events);
+                renderLegend();
+            })
+            .catch(error => {
+                console.error("Error loading events:", error);
+            });
+            }
 
     function renderCalendar(events) {
         let calendar = new FullCalendar.Calendar(calendarElm, {
@@ -322,4 +351,45 @@
             weekday: "short", month: "long", day: "numeric"
         });
     }
+    async function saveEvent(e) {
+    e.preventDefault();
+
+    const eventData = {
+        title: document.getElementById("eventTitle").value,
+        description: document.getElementById("eventDescription").value,
+        start_time: document.getElementById("eventStart").value,
+        end_time: document.getElementById("eventEnd").value,
+        location: document.getElementById("eventLocation").value,
+        category: document.getElementById("eventCategory").value
+    };
+
+    try {
+        const response = await fetch("/api/events", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(eventData)
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || "Failed to save event");
+        }
+
+        alert("Event created successfully!");
+
+        bootstrap.Modal.getInstance(
+            document.getElementById("createEventModal")
+        ).hide();
+
+        document.getElementById("createEventForm").reset();
+
+        window.location.reload();
+
+    } catch (error) {
+        console.error("Error saving event:", error);
+        alert("Error saving event: " + error.message);
+    }
+}
 })();
