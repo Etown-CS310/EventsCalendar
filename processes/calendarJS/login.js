@@ -2,12 +2,7 @@
 "use strict";
 
 // EventsCalendar - Login Page JavaScript
-// FRONT-END DEMONSTRATION ONLY
-// This does not provide secure authentication.
-
-// Demo account for testing
-const demoEmail = "student@etown.edu";
-const demoPassword = "Etown123!";
+// Connects the login form to the backend authentication API.
 
 // Get HTML elements
 const loginForm = document.getElementById("loginForm");
@@ -15,6 +10,7 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const togglePassword = document.getElementById("togglePassword");
 const loginMessage = document.getElementById("loginMessage");
+const loginBtn = document.getElementById("loginBtn");
 
 // Show a message on the page
 function showMessage(message, type) {
@@ -42,7 +38,7 @@ togglePassword.addEventListener("click", function () {
 });
 
 // Handle login
-loginForm.addEventListener("submit", function (event) {
+loginForm.addEventListener("submit", async function (event) {
 
     // Prevent the page from refreshing
     event.preventDefault();
@@ -64,18 +60,62 @@ loginForm.addEventListener("submit", function (event) {
         return;
     }
 
-    // Check demo credentials
-    if (email === demoEmail && password === demoPassword) {
+    // Disable login button while the request is processing
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Logging in...";
 
-        showMessage("Demo login successful! Redirecting...", "success");
+    try {
+
+        // Send login information to the backend API
+        const response = await fetch("/api/login", {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            credentials: "same-origin",
+
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
+
+        // Read the server response
+        const data = await response.json();
+
+        // Check if login was unsuccessful
+        if (!response.ok) {
+            showMessage(
+                data.error || data.message || "Incorrect email or password.",
+                "danger"
+            );
+
+            loginBtn.disabled = false;
+            loginBtn.textContent = "Log In";
+            return;
+        }
+
+        // Login was successful
+        showMessage("Login successful! Redirecting...", "success");
 
         // Redirect to EventsCalendar homepage
         setTimeout(function () {
             window.location.href = "index.html";
         }, 1200);
 
-    } else {
-        showMessage("Incorrect demo email or password.", "danger");
+    } catch (error) {
+
+        console.error("Login error:", error);
+
+        showMessage(
+            "Unable to log in. Please try again.",
+            "danger"
+        );
+
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Log In";
     }
 
 });
