@@ -10,7 +10,8 @@
         "Weekender": "#8e24aa",
         "Lectures": "#ef6c00",
         "Traditions": "#c62828",
-        "Athletics": "#2e7d32"
+        "Athletics": "#2e7d32",
+        "Arts & Culture": "#ef46deff"
     };
 
     window.addEventListener("load", init);
@@ -31,7 +32,10 @@
         });
 
         document.getElementById("createEventBtn").addEventListener("click", function () {
-            window.location.href = "eventForm.html";
+            const modal = new bootstrap.Modal(
+                document.getElementById("createEventModal")
+            );
+            modal.show();
         });
 
         let tempData = [{
