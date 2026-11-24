@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#004B87"/>
+  <rect x="12" y="18" width="40" height="34" rx="4" fill="white"/>
+  <path d="M12 28h40" stroke="#004B87" stroke-width="3"/>
+  <path d="M22 12v12 M42 12v12" stroke="white" stroke-width="5" stroke-linecap="round"/>
+  <text x="32" y="45" font-size="18" font-weight="bold" text-anchor="middle" fill="#004B87">E</text>
+</svg>
